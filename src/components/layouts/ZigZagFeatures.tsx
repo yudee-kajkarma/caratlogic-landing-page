@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform, Variants } from "motion/react";
 import { CheckCircle } from "@phosphor-icons/react";
 
 export function ZigZagFeatures() {
@@ -22,48 +22,90 @@ export function ZigZagFeatures() {
         }
     ];
 
+    const containerVariants = {
+        hidden: {},
+        visible: {
+            transition: {
+                staggerChildren: 0.15
+            }
+        }
+    };
+
+    const itemVariants:Variants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 0.5, ease: "easeOut" }
+        }
+    };
+
     return (
-        <section className="flex flex-col gap-16 md:gap-32 px-6 lg:px-12 py-24 max-w-[1240px] mx-auto bg-transparent">
+        <section className="flex flex-col gap-24 md:gap-32 px-6 lg:px-12 py-32 max-w-[1240px] mx-auto bg-transparent overflow-hidden">
             {features.map((feature, idx) => (
-                <div key={idx} className={`flex flex-col lg:flex-row items-center gap-10 lg:gap-20 ${feature.reversed ? 'lg:flex-row-reverse' : ''}`}>
-                    {/* Image Side */}
+                <div key={idx} className={`flex flex-col lg:flex-row items-center gap-12 lg:gap-24 ${feature.reversed ? 'lg:flex-row-reverse' : ''}`}>
+                    
+                    {/* Image Side with Hover/Scroll Parallax feel */}
                     <motion.div 
-                        initial={{ opacity: 0, x: feature.reversed ? 40 : -40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0, x: feature.reversed ? 60 : -60, filter: "blur(10px)" }}
+                        whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
                         viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.7, ease: "easeOut" }}
-                        className="w-full lg:w-1/2 relative aspect-square md:aspect-[4/3] rounded-2xl overflow-hidden shadow-xl"
+                        transition={{ duration: 0.8, ease: [0.32, 0.72, 0, 1] }}
+                        className="w-full lg:w-1/2 relative group"
                     >
-                        <Image src={feature.image} alt={feature.title} fill className="object-cover" />
-                        <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent mix-blend-overlay pointer-events-none"></div>
+                        <motion.div 
+                            whileHover={{ scale: 1.02, rotate: feature.reversed ? 1 : -1 }}
+                            transition={{ duration: 0.4, ease: "easeOut" }}
+                            className="relative aspect-[4/3] rounded-[2rem] overflow-hidden shadow-[0_20px_50px_-12px_rgba(0,0,0,0.15)] ring-1 ring-slate-900/5"
+                        >
+                            <Image src={feature.image} alt={feature.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                            {/* Subtle Inner Glow */}
+                            <div className="absolute inset-0 rounded-[2rem] ring-1 ring-inset ring-white/20 pointer-events-none"></div>
+                        </motion.div>
                     </motion.div>
 
                     {/* Text Side */}
                     <motion.div 
-                        initial={{ opacity: 0, x: feature.reversed ? -40 : 40 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
                         viewport={{ once: true, margin: "-100px" }}
-                        transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
-                        className="w-full lg:w-1/2 flex flex-col gap-6"
+                        className="w-full lg:w-1/2 flex flex-col gap-6 lg:py-6"
                     >
-                        <h2 className="text-slate-900 text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight">
+                        <motion.h2 
+                            variants={itemVariants}
+                            className="text-[#0F172A] text-4xl lg:text-[44px] font-extrabold leading-[1.1] tracking-[-0.02em]"
+                        >
                             {feature.title}
-                        </h2>
-                        <p className="text-slate-600 text-lg md:text-xl leading-relaxed">
+                        </motion.h2>
+                        
+                        <motion.p 
+                            variants={itemVariants}
+                            className="text-[#64748B] text-lg lg:text-[19px] leading-[1.6] max-w-lg mb-2"
+                        >
                             {feature.description}
-                        </p>
-                        <ul className="flex flex-col gap-4 mt-2">
+                        </motion.p>
+                        
+                        <motion.ul 
+                            variants={containerVariants}
+                            className="flex flex-col gap-4 mt-2"
+                        >
                             {feature.points.map((point, i) => (
-                                <li key={i} className="flex items-center gap-3">
-                                    <CheckCircle weight="fill" className="text-primary text-2xl shrink-0" />
-                                    <span className="text-slate-700 font-medium text-lg">{point}</span>
-                                </li>
+                                <motion.li key={i} variants={itemVariants} className="flex items-center gap-4">
+                                    <div className="flex items-center justify-center bg-white rounded-full shadow-sm text-[#2E7D32]">
+                                        <CheckCircle weight="fill" className="text-[26px]" />
+                                    </div>
+                                    <span className="text-[#334155] font-medium text-[17px]">{point}</span>
+                                </motion.li>
                             ))}
-                        </ul>
+                        </motion.ul>
+                        
                         {feature.button && (
-                            <button className="bg-primary hover:bg-emerald-700 transition-colors mt-4 text-white font-bold py-4 px-8 rounded-xl w-fit shadow-lg shadow-primary/20">
-                                {feature.button}
-                            </button>
+                            <motion.div variants={itemVariants} className="mt-8">
+                                <button className="bg-[#2E7D32] hover:bg-[#236026] text-white font-semibold py-3.5 px-8 rounded-xl transition-all shadow-[0_8px_20px_-6px_rgba(46,125,50,0.4)] hover:shadow-[0_12px_25px_-8px_rgba(46,125,50,0.5)] active:scale-[0.98] focus:ring-4 ring-[#2E7D32]/20">
+                                    {feature.button}
+                                </button>
+                            </motion.div>
                         )}
                     </motion.div>
                 </div>

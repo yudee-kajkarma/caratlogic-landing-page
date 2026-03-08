@@ -1,26 +1,42 @@
 import React from "react";
 import Link from "next/link";
 import { ArrowRight, EnvelopeSimple, Globe, ShareNetwork, UsersThree } from "@phosphor-icons/react";
-import { AuroraBackground } from "../ui/aurora-background";
+import { motion } from "motion/react";
+import Image from "next/image";
 
 export function Footer() {
     return (
         <footer className="w-full relative bg-white dark:bg-[#141e15]">
             {/* Dark CTA Section */}
-            <AuroraBackground className="dark bg-[#1E293B] py-24 px-6 relative !h-auto flex items-center justify-center">
-                <div className="max-w-xl mx-auto flex flex-col items-center gap-8 text-center relative z-20">
-                    <div className="flex flex-col gap-4">
-                        <h2 className="text-white text-3xl md:text-4xl lg:text-[44px] font-bold leading-tight tracking-tight">
+            <div className="bg-[#0f172a] relative py-24 md:py-32 px-6 overflow-hidden flex items-center justify-center">
+                {/* Abstract Ambient Glow */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#2E7D32]/20 blur-[120px] rounded-full pointer-events-none"></div>
+
+                <div className="max-w-xl mx-auto flex flex-col items-center gap-10 text-center relative z-20 w-full">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.6 }}
+                        className="flex flex-col gap-5"
+                    >
+                        <h2 className="text-white text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">
                             Don't Wait - Start Free Today
                         </h2>
-                        <p className="text-slate-300 text-base md:text-lg font-normal max-w-md mx-auto leading-relaxed">
+                        <p className="text-slate-300 text-base md:text-lg font-medium max-w-md mx-auto leading-relaxed">
                             Experience the premium diamond management SaaS platform trusted by global jewelers.
                         </p>
-                    </div>
+                    </motion.div>
                     
-                    <div className="w-full max-w-md">
+                    <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="w-full max-w-md"
+                    >
                         <form className="flex flex-col sm:flex-row w-full gap-3" onSubmit={(e) => e.preventDefault()}>
-                            <div className="flex flex-1 items-stretch rounded-xl bg-slate-800 border border-slate-700 focus-within:border-primary transition-colors overflow-hidden">
+                            <div className="flex flex-1 items-stretch rounded-xl bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 focus-within:border-[#2E7D32] transition-colors overflow-hidden shadow-inner">
                                 <EnvelopeSimple className="self-center ml-4 text-slate-400 text-xl" />
                                 <input 
                                     className="w-full border-none bg-transparent text-white focus:ring-0 placeholder:text-slate-500 text-[15px] py-4 px-3 outline-none" 
@@ -29,15 +45,15 @@ export function Footer() {
                                     required
                                 />
                             </div>
-                            <button className="bg-primary hover:bg-emerald-700 text-white font-bold py-4 px-8 rounded-xl transition-all shadow-lg shadow-primary/20 active:scale-95 whitespace-nowrap flex items-center justify-center gap-2 group">
+                            <button className="bg-[#2E7D32] hover:bg-[#236026] text-white font-bold py-4 px-8 rounded-xl transition-all shadow-[0_8px_20px_-6px_rgba(46,125,50,0.4)] hover:shadow-[0_12px_25px_-8px_rgba(46,125,50,0.5)] active:scale-95 whitespace-nowrap flex items-center justify-center gap-2 group">
                                 Start Trial
                                 <ArrowRight weight="bold" className="text-sm group-hover:translate-x-1 transition-transform" />
                             </button>
                         </form>
-                        <p className="text-slate-400 text-sm mt-6">14-day free trial. No credit card required.</p>
-                    </div>
+                        <p className="text-slate-400 text-sm mt-6 font-medium">14-day free trial. No credit card required.</p>
+                    </motion.div>
                 </div>
-            </AuroraBackground>
+            </div>
 
             {/* Bottom Light Section */}
             <div className="max-w-[1240px] mx-auto px-6 lg:px-12 pt-16 pb-12 relative z-10 border-t border-slate-100 dark:border-slate-800">
@@ -47,8 +63,8 @@ export function Footer() {
                     <div className="col-span-2 lg:col-span-2 flex flex-col gap-6 lg:pr-12">
                         <Link href="/" className="inline-block">
                             <span className="text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-3 tracking-tight">
-                                <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/20">
-                                    <Globe weight="fill" className="text-2xl" />
+                                <div className="w-10 h-10   flex items-center justify-center text-white ">
+                                    <Image src="/logo.png" alt="Logo" width={40} height={40} />
                                 </div>
                                 Carat Logic
                             </span>

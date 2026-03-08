@@ -1,10 +1,31 @@
 "use client";
 
-import React from "react";
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { Lightning, Star } from "@phosphor-icons/react";
+import { AnimatedNumber } from "../../../components/motion-primitives/animated-number";
 
 export const BentoGrid = () => {
+  const [isInView, setIsInView] = useState(false);
+  
+  // Dashboard simulation states
+  const [totalStones, setTotalStones] = useState(3729);
+  const [memoIssued, setMemoIssued] = useState(132567);
+  const [availableStones, setAvailableStones] = useState(4258);
+
+  useEffect(() => {
+      if (!isInView) return; // Wait until grid is in view before starting to simulate
+
+      const interval = setInterval(() => {
+          // Simulate real-time dashboard activity (some growing, some fluctuating)
+          setTotalStones(prev => prev + Math.floor(Math.random() * 15) - 2); 
+          setMemoIssued(prev => prev + Math.floor(Math.random() * 45) - 5);
+          setAvailableStones(prev => prev + Math.floor(Math.random() * 20) - 10); 
+      }, 10000);
+
+      return () => clearInterval(interval);
+  }, [isInView]);
+
   return (
     <section className="w-full max-w-[1240px] mx-auto px-6 lg:px-12 py-16 md:py-24">
       {/* Section Title */}
@@ -15,7 +36,11 @@ export const BentoGrid = () => {
       </div>
 
       {/* Grid Container */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[auto]">
+      <motion.div 
+        onViewportEnter={() => setIsInView(true)}
+        viewport={{ margin: "-100px" }}
+        className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[auto]"
+      >
         
         {/* Top Left Card - Spans 2 columns */}
         <motion.div 
@@ -46,11 +71,17 @@ export const BentoGrid = () => {
                 </svg>
              </div>
              {/* Floating Stats Card overlaying the phone */}
-             <div className="absolute top-28 sm:top-32 -left-4 sm:-left-16 bg-white rounded-2xl shadow-xl p-3 sm:p-4 w-[160px] sm:w-[200px] border border-[#f0f2f1] flex flex-col">
+             <motion.div 
+                 animate={{ y: [0, -6, 0] }}
+                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                 className="absolute top-28 sm:top-32 -left-4 sm:-left-16 bg-white rounded-2xl shadow-xl p-3 sm:p-4 w-[160px] sm:w-[200px] border border-[#f0f2f1] flex flex-col"
+             >
                  <span className="text-[#8c948e] text-[10px] sm:text-xs font-medium mb-1">Total Stones</span>
-                 <span className="text-xl sm:text-2xl font-bold text-[#1a2f22]">3,729</span>
+                 <span className="text-xl sm:text-2xl font-bold text-[#1a2f22]">
+                    <AnimatedNumber value={isInView ? totalStones : 0} />
+                 </span>
                  <span className="text-[#5ecf78] text-[10px] font-bold mt-1 tracking-wider">+ 7.00%</span>
-             </div>
+             </motion.div>
              {/* List Mockup */}
              <div className="w-full px-6 flex flex-col gap-3 mt-4">
                  <div className="flex items-center justify-between">
@@ -93,19 +124,25 @@ export const BentoGrid = () => {
           className="col-span-1 bg-[#5ecf78] rounded-[32px] p-8 md:p-10 relative overflow-hidden min-h-[460px] md:min-h-0 md:h-[420px] flex flex-col justify-end"
         >
           {/* Inner Floating Card */}
-          <div className="absolute top-8 md:top-10 left-6 md:left-10 right-6 md:right-10 bg-white rounded-2xl p-6 shadow-xl z-10 origin-top scale-[0.9] sm:scale-100">
+          <motion.div 
+            animate={{ y: [0, -5, 0] }}
+            transition={{ duration: 4, delay: 0.5, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute top-8 md:top-10 left-6 md:left-10 right-6 md:right-10 bg-white rounded-2xl p-6 shadow-xl z-10 origin-top scale-[0.9] sm:scale-100"
+          >
             <span className="text-[#1a2f22] text-sm font-semibold mb-3 block">Memo Issued</span>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-[#f4ebd0] flex items-center justify-center text-[#1a2f22] shrink-0">
                 <Lightning weight="fill" className="text-[#5ecf78] w-6 h-6" />
               </div>
-              <span className="text-[32px] md:text-[40px] font-light text-[#1a2f22] tracking-tight">132.567</span>
+              <span className="text-[32px] md:text-[40px] font-light text-[#1a2f22] tracking-tight">
+                <AnimatedNumber value={isInView ? memoIssued : 0} />
+              </span>
             </div>
             <div className="mt-8 flex flex-col gap-2">
               <div className="w-full h-2 rounded-full bg-[#e5fbf0]"></div>
               <div className="w-2/3 h-2 rounded-full bg-[#f4f7f5]"></div>
             </div>
-          </div>
+          </motion.div>
           {/* Faded background layer to give depth */}
           <div className="absolute top-12 md:top-14 left-6 md:left-10 right-6 md:right-10 bg-white/30 rounded-2xl h-[200px] -z-0 blur-sm scale-[1.05] md:scale-110 translate-y-4"></div>
 
@@ -129,7 +166,9 @@ export const BentoGrid = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[#e3ff99] blur-[80px] -z-10 rounded-full opacity-60"></div>
           
           {/* Inner Floating Card */}
-          <div className="absolute top-10 md:top-12 left-6 md:left-10 right-6 md:right-10 bg-white rounded-[24px] p-5 md:p-6 shadow-2xl z-10 origin-top scale-[0.9] sm:scale-100">
+          <div
+            className="absolute top-10 md:top-12 left-6 md:left-10 right-6 md:right-10 bg-white rounded-[24px] p-5 md:p-6 shadow-2xl z-10 origin-top scale-[0.9] sm:scale-100"
+          >
             {/* Avatars */}
             <div className="flex -space-x-3 mb-4 md:mb-6">
               <img src="https://i.pravatar.cc/100?img=1" alt="Avatar" className="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white object-cover" />
@@ -153,8 +192,8 @@ export const BentoGrid = () => {
           <div className="absolute top-14 md:top-16 left-8 md:left-12 right-8 md:right-12 bg-white/40 h-[200px] rounded-[24px] blur-sm translate-y-12"></div>
           <div className="absolute top-18 md:top-20 left-10 md:left-14 right-10 md:right-14 bg-white/20 h-[200px] rounded-[24px] blur-md translate-y-24"></div>
 
-          <div className="relative z-10 pt-[250px] md:pt-0 mt-auto md:mt-8">
-            <h3 className="text-[24px] md:text-[28px] font-bold text-[#1a2f22] mb-2 md:mb-3 tracking-tight">WhatsApp Sales</h3>
+          <div className="relative top-5 z-10 pt-[250px] md:pt-0 mt-auto md:mt-8">
+            <h3 className="text-[24px] md:text-[28px] font-bold text-[#1a2f22]  tracking-tight">WhatsApp Sales</h3>
             <p className="text-[#1a2f22]/80 text-[15px] md:text-[16px] leading-[1.5] font-medium pr-0 md:pr-4">
               Send live inventory links, automated follow-ups, and respond to clients instantly.
             </p>
@@ -212,12 +251,18 @@ export const BentoGrid = () => {
 
                  <div className="w-full flex flex-col items-center justify-center mb-6 md:mb-8">
                     <span className="text-xs text-[#8c948e] mb-1">Available Stones</span>
-                    <span className="text-[28px] md:text-[32px] font-bold text-[#1a2f22] tracking-tight">4,258</span>
+                    <span className="text-[28px] md:text-[32px] font-bold text-[#1a2f22] tracking-tight">
+                       <AnimatedNumber value={isInView ? availableStones : 0} />
+                    </span>
                     <span className="text-[10px] text-[#8c948e] mt-1">Real-time sync</span>
                  </div>
 
                  {/* Lime Send Money Box */}
-                 <div className="w-full bg-[#d1ff5e] rounded-[24px] p-4 md:p-5 relative shadow-sm">
+                 <motion.div 
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{ duration: 4.5, delay: 0.2, repeat: Infinity, ease: "easeInOut" }}
+                    className="w-full bg-[#d1ff5e] rounded-[24px] p-4 md:p-5 relative shadow-sm"
+                 >
                     <div className="flex justify-between items-center mb-4">
                         <span className="text-sm font-semibold text-[#1a2f22]">Share Stock List</span>
                         <div className="w-6 h-6 rounded-full border border-[#1a2f22]/20 flex items-center justify-center text-[#1a2f22] text-xs font-bold">+</div>
@@ -236,7 +281,7 @@ export const BentoGrid = () => {
                             <span className="text-[10px] font-medium opacity-60">James</span>
                         </div>
                     </div>
-                 </div>
+                 </motion.div>
 
                  {/* Last Transaction */}
                  <div className="mt-6 md:mt-8">
@@ -259,7 +304,7 @@ export const BentoGrid = () => {
           </div>
         </motion.div>
 
-      </div>
+      </motion.div>
     </section>
   );
 };
