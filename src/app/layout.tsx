@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Plus_Jakarta_Sans, Figtree } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Header from "@/components/layouts/Header";
 
-const figtree = Figtree({subsets:['latin'],variable:'--font-sans'});
+// Removed figtree
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -16,7 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
-    variable: "--font-plus-jakarta-sans",
+    variable: "--font-sans",
     subsets: ["latin"],
     weight: ["200", "300", "400", "500", "600", "700", "800"],
 });
@@ -32,10 +33,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className={cn("font-sans", figtree.variable)}>
+        <html lang="en" className={cn("font-sans scroll-smooth", plusJakartaSans.variable)}>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} ${plusJakartaSans.variable} antialiased`}
-            >
+            ><Header />
                 {children}
             </body>
         </html>
