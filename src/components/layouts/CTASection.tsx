@@ -4,23 +4,24 @@ import React from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react";
+import { AuroraBackground } from "../ui/aurora-background";
 
 export const CTASection = () => {
   return (
-    <section className="w-full bg-[#111827] pb-24 md:pb-32 pt-10 relative overflow-hidden flex justify-center">
+    <section className="w-full pb-24 md:pb-32 pt-10 relative overflow-hidden flex justify-center">
       {/* Container matching image rounded dark blocks */}
+      <AuroraBackground className="w-full h-fit   border border-white/5 px-6 py-20  relative overflow-hidden flex flex-col items-center justify-center text-center isolate">
       <motion.div 
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="w-full max-w-[1240px] mx-6 lg:mx-12 bg-[#0b1410] border border-white/5 rounded-[40px] px-6 py-20 md:py-28 relative overflow-hidden flex flex-col items-center justify-center text-center isolate"
+        className="w-full max-w-[1240px] mx-6 lg:mx-12  border border-white/5 rounded-[40px] px-6 py-20 md:py-28 relative overflow-hidden flex flex-col items-center justify-center text-center isolate"
       >
         {/* Abstract glowing waves logic simulating bottom image background */}
-        <div className="absolute bottom-[-20%] left-[-10%] w-[60%] h-[100%] bg-gradient-to-tr from-[#2E7D32]/40 to-transparent rounded-full opacity-60 blur-3xl -z-10"></div>
-        <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[80%] bg-[#5ecf78]/20 rounded-full opacity-40 blur-3xl -z-10"></div>
+        
 
-        <h2 className="text-[36px] sm:text-[48px] md:text-[64px] font-bold text-white mb-6 tracking-tight leading-[1.1] max-w-3xl">
+        <h2 className="text-[36px] sm:text-[48px] md:text-[64px] font-bold text-black mb-6 tracking-tight leading-[1.1] max-w-3xl">
           Transform Your Diamond Operations Today
         </h2>
         
@@ -41,6 +42,7 @@ export const CTASection = () => {
           </motion.div>
         </Link>
       </motion.div>
+      </AuroraBackground>
     </section>
   );
 };

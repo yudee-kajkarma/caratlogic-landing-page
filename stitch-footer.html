@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2f7f33",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#141e15",
+                        "slate-custom": "#1E293B",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<title>Diamond ERP - Footer Design</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Main Content Area (Spacer) -->
+<main class="flex-grow flex items-center justify-center p-8">
+<div class="text-center">
+<span class="material-symbols-outlined text-primary text-6xl mb-4">diamond</span>
+<h1 class="text-3xl font-bold tracking-tight">Diamond ERP Systems</h1>
+<p class="text-slate-500 dark:text-slate-400 mt-2">The world's most advanced diamond management platform.</p>
+</div>
+</main>
+<!-- CTA Section (Dark Slate) -->
+<section class="bg-slate-custom py-12 px-6 @container">
+<div class="max-w-xl mx-auto flex flex-col items-center gap-8 text-center">
+<div class="flex flex-col gap-3">
+<h2 class="text-white text-3xl font-bold leading-tight tracking-tight @[480px]:text-4xl">
+                    Don't Wait - Start Free Today
+                </h2>
+<p class="text-slate-300 text-base font-normal max-w-md mx-auto">
+                    Experience the premium diamond management SaaS platform trusted by global jewelers.
+                </p>
+</div>
+<div class="w-full max-w-md">
+<form class="flex flex-col @[480px]:flex-row w-full gap-3">
+<div class="flex flex-1 items-stretch rounded-lg bg-slate-800 border border-slate-700 focus-within:border-primary transition-colors">
+<span class="material-symbols-outlined self-center ml-3 text-slate-400">mail</span>
+<input class="form-input w-full border-none bg-transparent text-white focus:ring-0 placeholder:text-slate-500 text-sm py-3 px-3" placeholder="Enter your work email" type="email"/>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-8 rounded-lg transition-all shadow-lg shadow-primary/20 active:scale-95 whitespace-nowrap">
+                        Start Trial
+                    </button>
+</form>
+<p class="text-slate-500 text-xs mt-4">14-day free trial. No credit card required.</p>
+</div>
+</div>
+</section>
+<!-- Bottom Footer (Light Themed) -->
+<footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 pt-12 pb-8">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
+<!-- Brand Column -->
+<div class="col-span-2 lg:col-span-1 flex flex-col gap-4">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined font-bold">diamond</span>
+<span class="text-slate-900 dark:text-white font-bold text-xl tracking-tight">Diamond ERP</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                        Streamlining the global diamond supply chain with precision, transparency, and AI-driven insights.
+                    </p>
+<div class="flex gap-4 mt-2">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">public</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">share</span>
+</a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+</a>
+</div>
+</div>
+<!-- Nav Columns -->
+<div class="flex flex-col gap-4">
+<h3 class="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider">Product</h3>
+<nav class="flex flex-col gap-2">
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Inventory</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Analytics</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Global Sales</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">API Access</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider">Company</h3>
+<nav class="flex flex-col gap-2">
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">About Us</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Careers</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Press Kit</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider">Resources</h3>
+<nav class="flex flex-col gap-2">
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Documentation</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Help Center</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Community</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Marketplace</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<h3 class="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider">Legal</h3>
+<nav class="flex flex-col gap-2">
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Privacy Policy</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Terms of Service</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">Security</a>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm transition-colors" href="#">GDPR</a>
+</nav>
+</div>
+</div>
+<div class="mt-12 pt-8 border-t border-slate-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-slate-400 text-xs">© 2024 Diamond ERP Solutions Inc. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<span class="flex items-center gap-1 text-slate-400 text-xs">
+<span class="material-symbols-outlined text-sm">language</span> English (US)
+                    </span>
+<span class="flex items-center gap-1 text-slate-400 text-xs">
+<span class="material-symbols-outlined text-sm">account_balance_wallet</span> USD
+                    </span>
+</div>
+</div>
+</div>
+</footer>
+<!-- Mobile Bottom Navigation (Platform Consistency) -->
+<div class="sticky bottom-0 flex gap-2 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md px-4 pb-6 pt-2 md:hidden">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">home</span>
+<p class="text-[10px] font-medium leading-normal">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<p class="text-[10px] font-medium leading-normal">Features</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">sell</span>
+<p class="text-[10px] font-medium leading-normal">Pricing</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined">mail</span>
+<p class="text-[10px] font-medium leading-normal">Contact</p>
+</a>
+</div>
+</body></html>
