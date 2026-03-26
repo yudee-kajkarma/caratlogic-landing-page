@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { Check } from "@phosphor-icons/react";
+import { CheckCircle, ArrowUpRight } from "@phosphor-icons/react";
 import { AnimatedNumber } from "../../../components/motion-primitives/animated-number";
 
 export function PricingSection() {
@@ -10,34 +10,55 @@ export function PricingSection() {
     const plans = [
         {
             name: "Starter",
-            price: "$199",
-            period: "/mo",
-            features: ["Up to 500 stones", "Single location", "Basic reporting"],
+            price: 199,
+            period: "/Month",
+            description: "Essential features for growing diamond businesses",
+            features: [
+                "Up to 500 stones",
+                "Single location",
+                "Basic reporting",
+                "Email support",
+                "Data encryption",
+            ],
             cta: "Get Started",
-            highlighted: false
+            highlighted: false,
         },
         {
             name: "Professional",
-            price: "$499",
-            period: "/mo",
-            features: ["Unlimited inventory", "Multi-user access", "API Integrations", "Market analysis tools"],
+            price: 499,
+            period: "/Month",
+            description: "Advanced tools for scaling your operations",
+            features: [
+                "Unlimited inventory",
+                "Multi-user access",
+                "API Integrations",
+                "Market analysis tools",
+                "Priority support",
+            ],
             cta: "Go Professional",
-            highlighted: true
+            highlighted: true,
         },
         {
             name: "Enterprise",
-            price: "Custom",
+            price: null,
             period: "",
-            features: ["Global supply chain", "Dedicated manager", "On-premise option"],
+            description: "Custom solutions for global diamond enterprises",
+            features: [
+                "Global supply chain",
+                "Dedicated manager",
+                "On-premise option",
+                "Custom integrations",
+                "24/7 dedicated support",
+            ],
             cta: "Contact Sales",
-            highlighted: false
-        }
+            highlighted: false,
+        },
     ];
 
     return (
         <section className="py-24 px-6 lg:px-12 max-w-[1240px] mx-auto w-full">
             <div className="text-center mb-16">
-                <motion.h2 
+                <motion.h2
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -56,78 +77,189 @@ export function PricingSection() {
                 </motion.p>
             </div>
 
-            <motion.div 
+            <motion.div
                 onViewportEnter={() => setIsInView(true)}
                 viewport={{ margin: "-100px", once: true }}
-                className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center max-w-6xl mx-auto relative"
+                className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch max-w-6xl mx-auto"
             >
                 {plans.map((plan, idx) => {
                     const isHovered = hoveredIdx === idx;
-                    const numPrice = parseInt(plan.price.replace(/[^0-9]/g, ''));
-                    const isCustom = isNaN(numPrice);
+                    const isCustom = plan.price === null;
 
                     return (
-                    <motion.div
-                        key={idx}
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: idx * 0.1 }}
-                        onMouseEnter={() => setHoveredIdx(idx)}
-                        onMouseLeave={() => setHoveredIdx(null)}
-                        onClick={() => setHoveredIdx(idx)}
-                        className={`bg-white p-8 md:p-10 rounded-3xl relative flex flex-col h-full transition-all duration-500 cursor-pointer overfl ${
-                            plan.highlighted 
-                            ? `border-2 ${isHovered ? 'border-primary shadow-2xl shadow-primary/20 scale-[1.07]' : 'border-primary/80 shadow-xl shadow-primary/10 scale-105'} z-10` 
-                            : `border ${isHovered ? 'border-primary/30 shadow-xl shadow-slate-900/5 -translate-y-2' : 'border-slate-200'}`
-                        }`}
-                    >
-                        {/* Glow effect that follows hover */}
-                        <div className={`absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 transition-opacity duration-500 ${isHovered ? 'opacity-100' : ''}`} pointer-events-none="true" />
-                        
-                        {plan.highlighted && (
-                            <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-[11px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest whitespace-nowrap">
-                                Most Popular
-                            </div>
-                        )}
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: idx * 0.15 }}
+                            onMouseEnter={() => setHoveredIdx(idx)}
+                            onMouseLeave={() => setHoveredIdx(null)}
+                            className="relative group"
+                        >
+                            {/* Outer glow on hover */}
+                            <motion.div
+                                className="absolute -inset-3 rounded-[2rem] bg-primary/8 blur-2xl pointer-events-none"
+                                animate={{ opacity: isHovered ? 0.6 : 0 }}
+                                transition={{ duration: 0.4 }}
+                            />
 
-                        <p className={`text-sm font-bold tracking-widest uppercase mb-2 ${plan.highlighted ? 'text-primary' : 'text-slate-500'}`}>
-                            {plan.name}
-                        </p>
-                        
-                        <div className="flex items-baseline gap-1 mb-6 relative">
-                            {isCustom ? (
-                                <span className="text-4xl lg:text-5xl font-black text-slate-900">{plan.price}</span>
-                            ) : (
-                                <>
-                                    <span className="text-4xl lg:text-5xl font-black text-slate-900">$</span>
-                                    <span className="text-4xl lg:text-5xl font-black text-slate-900">
-                                        <AnimatedNumber value={isInView ? numPrice : 0} />
-                                    </span>
-                                </>
-                            )}
-                            <span className="text-slate-500 text-lg">{plan.period}</span>
-                        </div>
+                            {/* Card */}
+                            <motion.div
+                                animate={{
+                                    y: isHovered ? -6 : 0,
+                                }}
+                                transition={{
+                                    type: "spring",
+                                    stiffness: 300,
+                                    damping: 25,
+                                }}
+                                className="relative overflow-hidden rounded-3xl p-8 md:p-10 flex flex-col h-full cursor-pointer"
+                                style={{
+                                    background: plan.highlighted
+                                        ? "linear-gradient(175deg, rgba(46,125,50,0.18) 0%, rgba(46,125,50,0.06) 40%, rgba(250,247,240,0.7) 100%)"
+                                        : "linear-gradient(175deg, rgba(46,125,50,0.10) 0%, rgba(46,125,50,0.03) 40%, rgba(250,247,240,0.6) 100%)",
+                                    border: plan.highlighted
+                                        ? "1.5px solid rgba(46,125,50,0.25)"
+                                        : "1px solid rgba(46,125,50,0.10)",
+                                }}
+                            >
+                                {/* Shimmer effect on hover */}
+                                <motion.div
+                                    className="absolute inset-0 pointer-events-none"
+                                    style={{
+                                        background:
+                                            "linear-gradient(105deg, transparent 40%, rgba(46,125,50,0.06) 50%, transparent 60%)",
+                                    }}
+                                    animate={{
+                                        x: isHovered
+                                            ? ["-100%", "200%"]
+                                            : "-100%",
+                                    }}
+                                    transition={{
+                                        duration: 0.8,
+                                        ease: "easeInOut",
+                                    }}
+                                />
 
-                        <ul className="flex flex-col gap-4 mb-10 flex-grow mt-4">
-                            {plan.features.map((feature, i) => (
-                                <li key={i} className="flex items-center gap-3">
-                                    <div className="bg-primary/10 p-1 rounded-full shrink-0">
-                                        <Check weight="bold" className="text-primary text-sm" />
-                                    </div>
-                                    <span className={`text-slate-600 ${plan.highlighted ? 'font-semibold' : ''}`}>{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
+                                {/* Popular badge */}
+                                {plan.highlighted && (
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.8 }}
+                                        whileInView={{ opacity: 1, scale: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{
+                                            delay: 0.4,
+                                            type: "spring",
+                                        }}
+                                        className="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold px-4 py-1.5 rounded-bl-2xl rounded-tr-3xl uppercase tracking-widest"
+                                    >
+                                        Popular
+                                    </motion.div>
+                                )}
 
-                        <button className={`relative z-10 w-full py-4 text-sm uppercase tracking-wide rounded-xl font-bold transition-all duration-300 mt-auto
-                            ${plan.highlighted 
-                                ? 'bg-primary text-white hover:bg-emerald-700 shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 focus:ring-4 ring-primary/20' 
-                                : plan.name === 'Enterprise' ? 'bg-slate-900 text-white hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/20' : 'bg-transparent border-2 border-primary text-primary hover:bg-primary hover:text-white'}
-                        `}>
-                            {plan.cta}
-                        </button>
-                    </motion.div>
+                                {/* Plan name */}
+                                <p className="text-slate-600 text-sm font-semibold tracking-wide mb-5">
+                                    {plan.name} Package
+                                </p>
+
+                                {/* Price */}
+                                <div className="flex items-baseline gap-0.5 mb-3">
+                                    {isCustom ? (
+                                        <span className="text-4xl lg:text-[2.75rem] font-black text-slate-900 tracking-tight">
+                                            Custom
+                                        </span>
+                                    ) : (
+                                        <>
+                                            <span className="text-4xl lg:text-[2.75rem] font-black text-slate-900 tracking-tight">
+                                                $
+                                            </span>
+                                            <span className="text-4xl lg:text-[2.75rem] font-black text-slate-900 tracking-tight">
+                                                <AnimatedNumber
+                                                    value={
+                                                        isInView
+                                                            ? plan.price
+                                                            : 0
+                                                    }
+                                                />
+                                            </span>
+                                            <span className="text-4xl lg:text-[2.75rem] font-black text-slate-900 tracking-tight">
+                                                .00
+                                            </span>
+                                        </>
+                                    )}
+                                    {plan.period && (
+                                        <span className="text-slate-400 text-base font-medium ml-1">
+                                            {plan.period}
+                                        </span>
+                                    )}
+                                </div>
+
+                                {/* Description */}
+                                <p className="text-slate-500 text-sm leading-relaxed mb-8 font-medium">
+                                    {plan.description}
+                                </p>
+
+                                {/* Divider */}
+                                <div className="w-full h-px bg-slate-900/10 mb-8" />
+
+                                {/* Features list */}
+                                <ul className="flex flex-col gap-4 mb-10 flex-grow">
+                                    {plan.features.map((feature, i) => (
+                                        <motion.li
+                                            key={i}
+                                            initial={{ opacity: 0, x: -10 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{
+                                                duration: 0.3,
+                                                delay: idx * 0.1 + i * 0.06,
+                                            }}
+                                            className="flex items-center gap-3"
+                                        >
+                                            <CheckCircle
+                                                weight="fill"
+                                                className="text-primary text-xl shrink-0"
+                                            />
+                                            <span className="text-slate-700 text-sm font-bold">
+                                                {feature}
+                                            </span>
+                                        </motion.li>
+                                    ))}
+                                </ul>
+
+                                {/* CTA Button */}
+                                <motion.button
+                                    whileHover={{ scale: 1.03 }}
+                                    whileTap={{ scale: 0.97 }}
+                                    className={`relative z-10 w-full py-4 px-6 rounded-2xl font-bold text-sm tracking-wide transition-all duration-300 mt-auto flex items-center justify-center gap-2 ${
+                                        plan.highlighted
+                                            ? "bg-primary text-white shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/35"
+                                            : "bg-slate-900 text-white hover:bg-slate-800 shadow-md hover:shadow-lg"
+                                    }`}
+                                >
+                                    {plan.cta}
+                                    <motion.span
+                                        className="inline-flex"
+                                        animate={
+                                            isHovered
+                                                ? { x: 2, y: -2 }
+                                                : { x: 0, y: 0 }
+                                        }
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 400,
+                                            damping: 20,
+                                        }}
+                                    >
+                                        <ArrowUpRight
+                                            weight="bold"
+                                            className="text-base"
+                                        />
+                                    </motion.span>
+                                </motion.button>
+                            </motion.div>
+                        </motion.div>
                     );
                 })}
             </motion.div>
