@@ -24,6 +24,10 @@ const faqs = [
   {
     question: "Is Carat Logic cloud-based?",
     answer: "Yes. Carat Logic is a cloud-based diamond software platform, allowing secure remote access from anywhere in the world."
+  },
+  {
+    question: "Can Carat Logic support international diamond trading businesses?",
+    answer: "Yes. The system is built for global operations and supports multi-location access, structured inventory formatting, and secure client portals for international buyers."
   }
 ];
 

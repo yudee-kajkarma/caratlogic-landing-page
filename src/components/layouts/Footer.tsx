@@ -13,7 +13,7 @@ export function Footer() {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#2E7D32]/20 blur-[120px] rounded-full pointer-events-none"></div>
 
                 <div className="max-w-xl mx-auto flex flex-col items-center gap-10 text-center relative z-20 w-full">
-                    <motion.div 
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-100px" }}
@@ -21,14 +21,14 @@ export function Footer() {
                         className="flex flex-col gap-5"
                     >
                         <h2 className="text-white text-3xl md:text-5xl font-extrabold leading-tight tracking-tight">
-                            Don't Wait - Start Free Today
+                            Don&apos;t Wait - Start Free Today
                         </h2>
                         <p className="text-slate-300 text-base md:text-lg font-medium max-w-md mx-auto leading-relaxed">
                             Experience the premium diamond management SaaS platform trusted by global jewelers.
                         </p>
                     </motion.div>
-                    
-                    <motion.div 
+
+                    <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
@@ -38,9 +38,9 @@ export function Footer() {
                         <form className="flex flex-col sm:flex-row w-full gap-3" onSubmit={(e) => e.preventDefault()}>
                             <div className="flex flex-1 items-stretch rounded-xl bg-slate-800/80 backdrop-blur-sm border border-slate-700/50 focus-within:border-[#2E7D32] transition-colors overflow-hidden shadow-inner">
                                 <EnvelopeSimple className="self-center ml-4 text-slate-400 text-xl" />
-                                <input 
-                                    className="w-full border-none bg-transparent text-white focus:ring-0 placeholder:text-slate-500 text-[15px] py-4 px-3 outline-none" 
-                                    placeholder="Enter your work email" 
+                                <input
+                                    className="w-full border-none bg-transparent text-white focus:ring-0 placeholder:text-slate-500 text-[15px] py-4 px-3 outline-none"
+                                    placeholder="Enter your work email"
                                     type="email"
                                     required
                                 />
@@ -57,22 +57,22 @@ export function Footer() {
 
             {/* Bottom Light Section */}
             <div className="max-w-[1240px] mx-auto px-6 lg:px-12 pt-16 pb-12 relative z-10 border-t border-slate-100 dark:border-slate-800">
-                <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 md:gap-8 lg:gap-12">
-                    
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+
                     {/* Brand Column */}
-                    <div className="col-span-2 lg:col-span-2 flex flex-col gap-6 lg:pr-12">
+                    <div className="sm:col-span-2 flex flex-col gap-6 lg:pr-8">
                         <Link href="/" className="inline-block">
-                            <span className="text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-3 tracking-tight">
-                                <div className="w-10 h-10   flex items-center justify-center text-white ">
-                                    <Image src="/logo.png" alt="Logo" width={40} height={40} />
-                                </div>
-                                Carat Logic
-                            </span>
+                            <Image
+                                src="/logo-full.png"
+                                alt="Carat Logic"
+                                width={140}
+                                height={40}
+                            />
                         </Link>
                         <p className="text-slate-600 dark:text-slate-400 text-[15px] leading-relaxed max-w-sm">
-                            Streamlining the global diamond supply chain with precision, transparency, and AI-driven insights.
+                            Centralizing inventory management, sales automation, and financial reporting for the global diamond and jewelry industry.
                         </p>
-                        <div className="flex items-center gap-5 mt-4 text-slate-400">
+                        <div className="flex items-center gap-4 mt-2 text-slate-400">
                             <a href="#" className="hover:text-primary hover:-translate-y-1 transition-all p-2 bg-slate-50 dark:bg-slate-800 rounded-full">
                                 <Globe className="text-xl" />
                             </a>
@@ -85,34 +85,24 @@ export function Footer() {
                         </div>
                     </div>
 
-                    {/* Nav Columns */}
+                    {/* Pages Column */}
                     <div className="flex flex-col gap-6 col-span-1">
-                        <h3 className="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider">Product</h3>
+                        <h3 className="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider">Pages</h3>
                         <nav className="flex flex-col gap-4">
-                            <a className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="#">Inventory</a>
-                            <a className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="#">Analytics</a>
-                            <a className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="#">Global Sales</a>
-                            <a className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="#">API Access</a>
+                            <Link className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="/">Home</Link>
+                            <Link className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="/#features">Features</Link>
+                            <Link className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="/#pricing">Pricing</Link>
+                            <Link className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="/contact">Contact Us</Link>
                         </nav>
                     </div>
 
-                    <div className="flex flex-col gap-6 col-span-1">
-                        <h3 className="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider">Company</h3>
-                        <nav className="flex flex-col gap-4">
-                            <a className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="#">About Us</a>
-                            <a className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="#">Careers</a>
-                            <a className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="#">Press Kit</a>
-                            <a className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="#">Contact</a>
-                        </nav>
-                    </div>
-
+                    {/* Legal Column */}
                     <div className="flex flex-col gap-6 col-span-1">
                         <h3 className="text-slate-900 dark:text-white font-bold text-sm uppercase tracking-wider">Legal</h3>
                         <nav className="flex flex-col gap-4">
                             <a className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="#">Privacy Policy</a>
                             <a className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="#">Terms of Service</a>
                             <a className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="#">Security</a>
-                            <a className="text-slate-500 dark:text-slate-400 hover:text-primary text-[15px] transition-colors" href="#">GDPR</a>
                         </nav>
                     </div>
                 </div>

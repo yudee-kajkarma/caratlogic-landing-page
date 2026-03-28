@@ -16,9 +16,9 @@ export function PricingSection() {
             features: [
                 "Up to 500 stones",
                 "Single location",
-                "Basic reporting",
+                "Basic financial reports",
                 "Email support",
-                "Data encryption",
+                "Encrypted cloud storage",
             ],
             cta: "Get Started",
             highlighted: false,
@@ -30,9 +30,9 @@ export function PricingSection() {
             description: "Advanced tools for scaling your operations",
             features: [
                 "Unlimited inventory",
-                "Multi-user access",
-                "API Integrations",
-                "Market analysis tools",
+                "Multi-location tracking",
+                "WhatsApp integration",
+                "Memo & sales automation",
                 "Priority support",
             ],
             cta: "Go Professional",
@@ -44,9 +44,9 @@ export function PricingSection() {
             period: "",
             description: "Custom solutions for global diamond enterprises",
             features: [
-                "Global supply chain",
-                "Dedicated manager",
-                "On-premise option",
+                "Global multi-location access",
+                "Dedicated account manager",
+                "Marketplace-ready formatting",
                 "Custom integrations",
                 "24/7 dedicated support",
             ],
@@ -56,7 +56,7 @@ export function PricingSection() {
     ];
 
     return (
-        <section className="py-24 px-6 lg:px-12 max-w-[1240px] mx-auto w-full">
+        <section id="pricing" className="py-24 px-6 lg:px-12 max-w-[1240px] mx-auto w-full">
             <div className="text-center mb-16">
                 <motion.h2
                     initial={{ opacity: 0, y: 20 }}

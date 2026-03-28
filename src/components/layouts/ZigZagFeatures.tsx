@@ -7,57 +7,61 @@ import { CheckCircle, ArrowLeft, ArrowRight } from "@phosphor-icons/react";
 
 const features = [
     {
-        title: "Built For Performance",
+        title: "Diamond Inventory Intelligence",
         description:
-            "Optimize your entire workflow with tools specifically designed for high-value diamond trading.",
+            "Structured diamond data architecture supporting every grading attribute — from carat weight and clarity to certification and origin.",
         points: [
-            "Real-time inventory sync",
-            "Automated grading reports",
-            "RapNet integration ready",
+            "Real-time multi-location tracking",
+            "Advanced search and filtering",
+            "RapNet-ready data formatting",
         ],
         image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1000",
         accent: "#2E7D32",
     },
     {
-        title: "Global Market Insights",
+        title: "Sales & Memo Automation",
         description:
-            "Stay ahead of price fluctuations with deep analytics powered by global market data.",
-        points: ["Predictive pricing models", "Historical trend analysis"],
+            "Automate the entire workflow from quotation creation to invoice conversion with integrated memo tracking and real-time stock validation.",
+        points: [
+            "One-click quotation generation",
+            "Automated memo due date alerts",
+            "Client-specific pricing rules",
+        ],
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
         accent: "#1565C0",
     },
     {
-        title: "Secure Transactions",
+        title: "Integrated Communication",
         description:
-            "End-to-end encrypted trading platform with multi-layer authentication and audit trails.",
+            "WhatsApp integration and secure client portal access to send live inventory directly to buyers with controlled pricing visibility.",
         points: [
-            "Bank-grade encryption",
-            "Two-factor authentication",
-            "Complete audit logs",
+            "WhatsApp inventory sharing",
+            "Automated follow-up reminders",
+            "Conversation-linked sales tracking",
         ],
         image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=1000",
         accent: "#6A1B9A",
     },
     {
-        title: "Smart Inventory",
+        title: "Financial Intelligence",
         description:
-            "AI-powered inventory management that predicts demand and optimizes your stock levels.",
+            "Built-in reporting tools for revenue performance, outstanding balances, inventory valuation, and profitability per stone.",
         points: [
-            "Demand forecasting",
-            "Auto-reorder alerts",
-            "Multi-location tracking",
+            "Revenue tracking dashboards",
+            "Inventory valuation insights",
+            "Export-ready financial reports",
         ],
         image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1000",
         accent: "#E65100",
     },
     {
-        title: "Seamless Integration",
+        title: "Enterprise Cloud Security",
         description:
-            "Connect with your existing tools and platforms through our robust API ecosystem.",
+            "Encrypted cloud infrastructure with role-based permissions, secure authentication, and automated backup systems for high-value inventory.",
         points: [
-            "REST & GraphQL APIs",
-            "Webhook automation",
-            "50+ integrations",
+            "Encrypted data storage",
+            "Role-based access control",
+            "Automatic data backups",
         ],
         image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1000",
         accent: "#00838F",
@@ -126,17 +130,17 @@ export function ZigZagFeatures() {
                 className="text-center px-6 mb-16 md:mb-20 max-w-3xl mx-auto"
             >
                 <span className="inline-block text-[#2E7D32] text-sm font-bold tracking-widest uppercase mb-4">
-                    Why CaratLogic
+                    Core Platform Architecture
                 </span>
                 <h2 className="text-[#0F172A] text-4xl md:text-5xl lg:text-[56px] font-extrabold leading-[1.08] tracking-[-0.03em] mb-5">
-                    Everything you need to{" "}
+                    Built specifically for{" "}
                     <span className="bg-gradient-to-r from-[#2E7D32] to-[#1565C0] bg-clip-text text-transparent">
-                        scale your business
+                        diamond trading
                     </span>
                 </h2>
                 <p className="text-[#64748B] text-lg md:text-xl leading-relaxed">
-                    A comprehensive suite of tools designed for modern diamond
-                    traders.
+                    Unlike generic ERP systems, Carat Logic is engineered around
+                    the unique complexity of diamond and gemstone trading.
                 </p>
             </motion.div>
 

@@ -41,7 +41,7 @@ export const FeaturesSection = () => {
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-[#111827] py-24 md:py-32 relative overflow-hidden">
+    <section id="features" className="w-full bg-[#111827] py-24 md:py-32 relative overflow-hidden">
       {/* Background ambient glows */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-[#2E7D32]/10 blur-[120px] rounded-full pointer-events-none -z-0 focus:outline-none"></div>
       
