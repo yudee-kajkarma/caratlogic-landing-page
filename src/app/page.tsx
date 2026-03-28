@@ -26,7 +26,7 @@ export default function Home() {
             <ZigZagFeatures />
             <FeaturesSection />
             <Testimonials />
-            <PricingSection />
+            {/* <PricingSection /> */}
             <FAQSection />
             <Footer />
         </div>
